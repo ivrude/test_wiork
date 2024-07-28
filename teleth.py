@@ -7,9 +7,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import logging
 from sqlalchemy.exc import DataError, IntegrityError
-from settings import api_id, api_hash, phone
+from settings import api_id, api_hash, phone, DATABASE_URL
 
-DATABASE_URL = "postgresql://admin:admin@172.19.224.1/test_proj_db_2"
+
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -48,7 +48,7 @@ async def main():
     dialogs = await client.get_dialogs()
 
 
-    threshold_time = datetime.now() - timedelta(minutes=180+9)
+    threshold_time = datetime.now() - timedelta(minutes=180+5)
     threshold_time = pytz.utc.localize(threshold_time)
 
 
