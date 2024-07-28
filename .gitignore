@@ -1,0 +1,4 @@
+*.session
+settings.py
+test_conect.py
+venv
